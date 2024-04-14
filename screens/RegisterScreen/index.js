@@ -2,47 +2,44 @@ import React, { useState } from "react";
 import {
   View,
   TextInput,
-  Text,
   StyleSheet,
-  Image,
   TouchableOpacity,
+  Text,
+  Image,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { BASE_URL_API } from "../../consts/consts";
 import imageBg from "../../assets/images/background/helpet bg.jpeg";
 
-const LoginScreen = ({ navigation }) => {
+const RegistrationScreen = () => {
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
+  const handleRegistration = async () => {
     try {
-      const response = await fetch(`${BASE_URL_API}/login`, {
+      const response = await fetch(`${BASE_URL_API}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: email,
+          email,
           password,
-          twoFactorCode: "",
-          twoFactorRecoveryCode: "",
         }),
       });
 
       const data = await response.json();
-
+      debugger;
       if (response.ok) {
-        navigation.navigate("Profile", { username: email });
+        navigation.navigate("Login");
       } else {
         console.error("Authentication failed:", data.message);
       }
     } catch (error) {
       console.error("Error occurred:", error);
     }
-  };
-
-  const moveRegistration = () => {
-    navigation.navigate("Register");
   };
 
   return (
@@ -56,6 +53,12 @@ const LoginScreen = ({ navigation }) => {
           style={styles.input}
         />
         <TextInput
+          placeholder="Nome de usuário"
+          value={username}
+          onChangeText={setUsername}
+          style={styles.input}
+        />
+        <TextInput
           placeholder="Senha"
           value={password}
           onChangeText={setPassword}
@@ -63,14 +66,8 @@ const LoginScreen = ({ navigation }) => {
           style={styles.input}
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.text}>{"Login"}</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={moveRegistration}>
-          <Text style={(styles.text, styles.registerText)}>
-            {"Registrar-se"}
-          </Text>
+        <TouchableOpacity style={styles.button} onPress={handleRegistration}>
+          <Text style={styles.text}>{"Registrar"}</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -129,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default RegistrationScreen;

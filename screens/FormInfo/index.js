@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/*import React, { useState } from "react";
 import {
   View,
   TextInput,
@@ -10,7 +10,11 @@ import {
 import { BASE_URL_API } from "../../consts/consts";
 import imageBg from "../../assets/images/background/helpet bg.jpeg";
 
-const LoginScreen = ({ navigation }) => {
+const FormInfo = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -130,3 +134,4 @@ const styles = StyleSheet.create({
 });
 
 export default LoginScreen;
+*/
