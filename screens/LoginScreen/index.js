@@ -6,9 +6,12 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  Button,
 } from "react-native";
 import { BASE_URL_API } from "../../consts/consts";
 import imageBg from "../../assets/images/background/helpet bg.jpeg";
+import FlatButton from "../../shared/button";
+import CustomTextInput from "../../shared/text";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -66,6 +69,26 @@ const LoginScreen = ({ navigation }) => {
         <TouchableOpacity style={styles.button} onPress={handleLogin}>
           <Text style={styles.text}>{"Login"}</Text>
         </TouchableOpacity>
+
+      {/* 
+      chamada para botão em componente personalizado. 
+      
+      <FlatButton
+            text='botao2'
+            onPress={() => console.log('Botão pressionado')}
+            style={{ backgroundColor: 'blue', borderRadius: 10 }}
+      /> 
+
+      chamada para botão em componente personalizado.
+
+      <CustomTextInput
+          value=""
+          onChangeText=""
+          placeholder="Digite algo..."
+          inputStyle={styles.input}
+      />
+
+      */}
 
         <TouchableOpacity onPress={moveRegistration}>
           <Text style={(styles.text, styles.registerText)}>
