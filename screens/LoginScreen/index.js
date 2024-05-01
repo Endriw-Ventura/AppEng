@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email: email,
+          email,
           password,
           twoFactorCode: "",
           twoFactorRecoveryCode: "",
@@ -32,7 +32,7 @@ const LoginScreen = ({ navigation }) => {
       const data = await response.json();
 
       if (response.ok) {
-        navigation.navigate("Profile", { username: email });
+        navigation.navigate("Profile", { accessToken: data.accessToken });
       } else {
         console.error("Authentication failed:", data.message);
       }

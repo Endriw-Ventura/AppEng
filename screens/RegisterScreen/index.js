@@ -31,7 +31,6 @@ const RegistrationScreen = () => {
       });
 
       const data = await response.json();
-      debugger;
       if (response.ok) {
         navigation.navigate("Login");
       } else {

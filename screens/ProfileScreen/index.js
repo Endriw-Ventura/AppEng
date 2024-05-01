@@ -2,24 +2,22 @@ import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
 const ProfileScreen = ({ route }) => {
-  const { username } = route.params;
-  const nome = "Maria Joaquina";
-  const telefone = "981135135";
-  const email = "teste@teste.com";
-  const endereco =
-    "Rua João Carvalho de Moraes, 159, Bairro São Carlos, Porto Alegre, RS";
+  debugger;
+  const { accessToken } = route.params;
 
   return (
     <View style={styles.container}>
       <View style={styles.containerBemVindo}>
-        <Text style={styles.title}>Bem-vindo, {username}!</Text>
+        <Text style={styles.title}>Bem-vindo, {userName}!</Text>
       </View>
       <View style={styles.containerInfo}>
-        <Text style={styles.text}>Nome Completo: {nome}</Text>
+        <Text style={styles.text}>Nome Completo: {userName}</Text>
         <Text style={styles.text}>Informações para contato:</Text>
         <Text style={styles.text}>Email: {email}</Text>
-        <Text style={styles.text}>Telefone: {telefone}</Text>
-        <Text style={styles.text}>Endereço: {endereco}</Text>
+        <Text style={styles.text}>Telefone: {phoneNumber}</Text>
+        <Text style={styles.text}>
+          Endereço: {address.street}, {address.city}, {address.uf}
+        </Text>
       </View>
     </View>
   );
